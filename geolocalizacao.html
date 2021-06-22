@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Geolocalizacao</title>
+	<meta charset="utf-8">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+<body>
+	<center>
+	<div class="row d-none d-sm-none d-lg-block">
+		<br><b>Aviso!</b><br>A visualização do site está disponivel apenas para celulares.
+	</div>
+	<script type="text/javascript">
+	var loc1;
+	var loc2;
+	function loca1(){
+		navigator.geolocation.getCurrentPosition(function(position){
+		loc1 = position.coords.altitude;
+		console.log(loc1);
+		document.getElementById("res1").value = loc1;
+		});
+	}
+		function loca2(){
+		navigator.geolocation.getCurrentPosition(function(position){
+		loc2 = position.coords.altitude;
+		console.log(loc2);
+		document.getElementById("res2").value = loc2;
+		});
+	}
+		function calculate(){
+			if (loc1 > loc2) {
+			document.getElementById("diff").value = loc1 - posi2;
+		}
+
+		else if(loc2 > loc1){
+			document.getElementById("diff").value = loc2 - loc1;
+		}
+		else if(loc1 == loc2){
+			document.getElementById("diff").value = "As duas alturas são iguais, " + loc1;
+		}
+		}
+</script>
+	<div class="container">
+		<div class="row d-none d-sm-block d-lg-none">
+
+                                <center>
+
+  				<br><br>
+
+ 				<button onclick="loca1()">Pegar altitude 1</button>
+
+				<input type="text" id="res1"></input> <br> <br>
+
+				<button onclick="loca2()">Pegar altitude 2</button>
+
+				<input type="text" id="res2"></input> <br> <br>
+
+				<button onclick="calculate()">Calcular</button>
+
+				<br><br>
+
+				<textarea type="text" id="diff"></textarea>
+		</div>	
+	</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+</html>
